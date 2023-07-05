@@ -10,7 +10,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaIoBaseDownload , MediaIoBaseUpload
+from googleapiclient.http import MediaIoBaseDownload , MediaFileUpload
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/drive']
@@ -31,10 +31,12 @@ def main(folder_id,zip_name):
             token.write(creds.to_json())
     try:
         service = build('drive', 'v3', credentials=creds)
+        os.makedirs("temp")
         download_files_from_folder(folder_id,"temp",service)
         zip_folder("temp",zip_name)
         gd_upload(zip_name,folder_id,service)
         delete_folder("temp",zip_name)
+        os.rmdir("temp")
     except HttpError as error:
         print(f'An error occurred: {error}')
 
@@ -91,12 +93,14 @@ def gd_upload(file_path,folder,drive_service):
     print("\n\n Uploading Zip to Drive\n\n")
     file_metadata = {
         'name': os.path.basename(file_path),
-        'parents': [folder]
+        'parents': [folder],
+        'mimeType': '*/*'
     }
-    media = MediaIoBaseUpload(io.FileIO(file_path, 'rb'), mimetype='application/octet-stream', chunksize=1024*1024)
-    uploaded_file = drive_service.files().create(body=file_metadata, media_body=media,
-    supportsAllDrives=True, fields='id').execute()
-    return uploaded_file["id"]
+    media = MediaFileUpload(file_path,
+                            mimetype='*/*',
+                            resumable=True)
+    file = drive_service.files().create(body=file_metadata, media_body=media, supportsAllDrives=True, fields='id').execute()
+    print ('File ID: ' + file.get('id'))
 
 def delete_folder(folder_path , zip_file):
     # Get the list of files in the folder
