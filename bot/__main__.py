@@ -1,6 +1,7 @@
 import os
 import logging
 from pyrogram import Client
+from art import tprint
 from bot import (
   APP_ID,
   API_HASH,
@@ -34,5 +35,6 @@ if __name__ == "__main__":
         max_concurrent_transmissions=MAX_TASKS
     )
     LOGGER.info('Starting Bot !')
+    tprint("XChetan9")
     app.run()
     LOGGER.info('Bot Stopped !')
