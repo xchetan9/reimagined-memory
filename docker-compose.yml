@@ -1,0 +1,9 @@
+version: '3'
+services:
+  my_python_bot:
+    image: python:3
+    container_name: my_python_bot_container
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && python3 -m bot"
