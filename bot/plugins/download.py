@@ -4,7 +4,7 @@ import aiohttp
 import time
 import zipfile
 from pyrogram import Client, filters
-from bot.helpers.sql_helper import gDriveDB, idsDB
+from bot.helpers.sql_helper import nameDB
 from bot.helpers.downloader import download_file, utube_dl
 from bot.helpers.utils import CustomFilters, humanbytes
 from bot.helpers.gdrive_utils import GoogleDrive
@@ -27,6 +27,7 @@ async def _zip(client, message):
     gdid = gd.getIdFromUrl(id)
     files = gd.getFilesByFolderId(gdid)
     await x.edit_text(Messages.FetchedFiles.format(len(files)))
+    nameDB._setsame(user_id, gdid)
     temp_di = DOWNLOAD_DIRECTORY+"temp"+str(user_id)+"/"
     os.makedirs(temp_di, exist_ok=True)
     for file in files:
@@ -35,7 +36,6 @@ async def _zip(client, message):
     
     await x.edit_text(Messages.ZipStart.format(name+".zip","starting"))
     total_files = len(files)
-
     with zipfile.ZipFile(name+".zip", 'w', zipfile.ZIP_DEFLATED) as zipf:
         progress = 0
         for root, dirs, files in os.walk(temp_di):
@@ -47,7 +47,7 @@ async def _zip(client, message):
                 print(f'')
                 await x.edit_text(Messages.ZipStart.format(name+".zip",f"Progress: {progress}/{total_files} ({percentage:.2f}%)"))
     await x.edit_text(Messages.ZipEnd.format(name+".zip",f"Uploading to Gdrive..."))
-    msg = await gd.upload_file(name+".zip")
+    msg = await GoogleDrive(user_id).upload_file(name+".zip")
     await x.edit(msg)
     file_list = os.listdir(temp_di)
     os.remove(name+".zip")
@@ -57,6 +57,7 @@ async def _zip(client, message):
         if os.path.isfile(file_path):
             os.remove(file_path)
     os.rmdir(temp_di)    
+    nameDB.removesame(user_id)
 
 @Client.on_message(filters.private & filters.incoming & filters.text & (filters.command(BotCommands.Download) | filters.regex('^(ht|f)tp*')) & CustomFilters.auth_users)
 async def _download(client, message):

@@ -18,7 +18,7 @@ from bot.helpers.utils import humanbytes
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload ,MediaIoBaseDownload
-from bot.helpers.sql_helper import gDriveDB, idsDB
+from bot.helpers.sql_helper import gDriveDB, idsDB , nameDB
 
 
 logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
@@ -33,7 +33,8 @@ class GoogleDrive:
     self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL = "https://drive.google.com/drive/folders/{}"
     self.__service = self.authorize(gDriveDB.search(user_id))
     self.__parent_id = idsDB.search_parent(user_id)
-
+    self.__name = nameDB.search_name(user_id)
+    self.__sameparent = nameDB.search_sameparent(user_id)
   def getIdFromUrl(self, link: str):
       if "folders" in link or "file" in link:
           regex = r"https://drive\.google\.com/(drive)?/?u?/?\d?/?(mobile)?/?(file)?(folders)?/?d?/([-\w]+)[?+]?/?(w+)?"
@@ -140,8 +141,6 @@ class GoogleDrive:
       return f"**ERROR:** ```{err}```"
 
   
-  @retry(wait=wait_exponential(multiplier=2, min=3, max=6), stop=stop_after_attempt(5),
-    retry=retry_if_exception_type(HttpError), before=before_log(LOGGER, logging.DEBUG))
   async def download_file(self ,file_id,destination_path):
         request = self.__service.files().get_media(fileId=file_id)
         fh = io.BytesIO()
@@ -170,14 +169,18 @@ class GoogleDrive:
             chunksize=150*1024*1024,
             resumable=True
         )
-        filename = os.path.basename(file_path)
+        namep = self.__name
+        filename = namep + os.path.basename(file_path)
         filesize = humanbytes(os.path.getsize(file_path))
         body = {
             "name": filename,
             "description": "Uploaded using @UploadGdriveBot",
             "mimeType": mime_type,
         }
-        body["parents"] = [self.__parent_id]
+        if self.__sameparent:
+          body["parents"] = [self.__sameparent]
+        else:
+          body["parents"] = [self.__parent_id]
         LOGGER.info(f'Upload: {file_path}')
         async with aiohttp.ClientSession() as session:
             try:
@@ -196,6 +199,7 @@ class GoogleDrive:
             except Exception as e:
                 print(f"Exception raised: {type(e).__name__} - {str(e)}")
                 return f"**ERROR:** ```{e}```"
+        self.__removesame
 
   async def __execute_request(self, session, request):
         """Execute the given request and return the JSON response."""

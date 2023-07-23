@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from bot.config import BotCommands, Messages
 from bot.helpers.utils import CustomFilters
 from bot.helpers.gdrive_utils import GoogleDrive
-from bot.helpers.sql_helper import idsDB
+from bot.helpers.sql_helper import idsDB , nameDB
 from bot import LOGGER
 
 @Client.on_message(filters.private & filters.incoming & filters.command(BotCommands.SetFolder) & CustomFilters.auth_users)
@@ -28,3 +28,12 @@ def _set_parent(client, message):
       message.reply_text(Messages.PARENT_CLEAR_SUCCESS, quote=True)
   else:
     message.reply_text(Messages.CURRENT_PARENT.format(idsDB.search_parent(user_id), BotCommands.SetFolder[0]), quote=True)
+
+
+@Client.on_message(filters.private & filters.incoming & filters.command(BotCommands.SetName) & CustomFilters.auth_users)
+def _set_name(client, message):
+  user_id = message.from_user.id
+  text = message.text.replace("/setname ", "")
+  nameDB._set(user_id, text)
+  LOGGER.info(f'SetName:{user_id}: {text}')
+  message.reply(Messages.PARENT_SET_SUCCESS.format(text, "/setname "))

@@ -1,47 +1,16 @@
 import pickle
-import threading
-from sqlalchemy import Column, Integer, String, LargeBinary
-from bot.helpers.sql_helper import BASE, SESSION
-
-
-class gDriveCreds(BASE):
-    __tablename__ = "gDrive"
-    chat_id = Column(Integer, primary_key=True)
-    credential_string = Column(LargeBinary)
-
-
-    def __init__(self, chat_id):
-        self.chat_id = chat_id
-
-
-gDriveCreds.__table__.create(checkfirst=True)
-
-INSERTION_LOCK = threading.RLock()
+import os
 
 def _set(chat_id, credential_string):
-    with INSERTION_LOCK:
-        saved_cred = SESSION.query(gDriveCreds).get(chat_id)
-        if not saved_cred:
-            saved_cred = gDriveCreds(chat_id)
-
-        saved_cred.credential_string = pickle.dumps(credential_string)
-
-        SESSION.add(saved_cred)
-        SESSION.commit()
-
+    with open(f"bot/data/gd{chat_id}.bat",'wb') as f :
+        f.write(pickle.dumps(credential_string))
 
 def search(chat_id):
-    with INSERTION_LOCK:
-        saved_cred = SESSION.query(gDriveCreds).get(chat_id)
-        creds = None
-        if saved_cred is not None:
-            creds = pickle.loads(saved_cred.credential_string)
-        return creds
-
+    try :
+        with open(f"bot/data/gd{chat_id}.bat",'rb') as f :
+            return pickle.loads(f.read())
+    except FileNotFoundError :
+        return None
 
 def _clear(chat_id):
-    with INSERTION_LOCK:
-        saved_cred = SESSION.query(gDriveCreds).get(chat_id)
-        if saved_cred:
-            SESSION.delete(saved_cred)
-            SESSION.commit()
+    os.remove(f"bot/data/gd{chat_id}.bat")

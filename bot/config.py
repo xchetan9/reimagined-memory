@@ -21,6 +21,7 @@ class BotCommands:
   Delete = ['delete', 'del']
   EmptyTrash = ['emptyTrash']
   YtDl = ['ytdl']
+  SetName = ['setname','setname', 'name','setname', 'name', 'name']
 
 class Messages:
     START_MSG = "**Hi there {}.**\n__I'm Google Drive Uploader Bot.You can use me to upload any file / video to Google Drive from direct link or Telegram Files.__\n__You can know more from /help.__"
@@ -75,6 +76,8 @@ class Messages:
     
     PARENT_SET_SUCCESS = '🆔✅ **Custom Folder link set successfully.**\n__Your custom folder id - {}\nUse__ ```/{} clear``` __to clear it.__'
     
+    NAME_SET_SUCCESS = '🆔✅ **Custom Name set successfully.**\n__Your Name - {}\nUse__ ```/{} clear``` __to clear it.__'
+
     PARENT_CLEAR_SUCCESS = f'🆔🚮 **Custom Folder ID Cleared Successfuly.**\n__Use__ ```/{BotCommands.SetFolder[0]} (Folder Link)``` __to set it back__.'
     
     CURRENT_PARENT = "🆔 **Your Current Custom Folder ID - {}**\n__Use__ ```/{} (Folder link)``` __to change it.__"
