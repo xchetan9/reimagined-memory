@@ -29,7 +29,7 @@ logging.getLogger('oauth2client.client').setLevel(logging.ERROR)
 class GoogleDrive:
   def __init__(self, user_id):
     self.__G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
-    self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/uc?id={}&export=download"
+    self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/file/d/{}/view"
     self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL = "https://drive.google.com/drive/folders/{}"
     self.__service = self.authorize(gDriveDB.search(user_id))
     self.__parent_id = idsDB.search_parent(user_id)
@@ -57,7 +57,7 @@ class GoogleDrive:
                                                  q=q,
                                                  spaces='drive',
                                                  pageSize=200,
-                                                 fields='nextPageToken, files(id, name, mimeType,size)',
+                                                 fields='nextPageToken,files(id, name, mimeType,size)',
                                                  pageToken=page_token).execute()
           for file in response.get('files', []):
               files.append(file)
@@ -84,7 +84,7 @@ class GoogleDrive:
 
 
   def cloneFolder(self, name, local_path, folder_id, parent_id):
-      files = self.getFilesByFolderId(folder_id)
+      files , mmxmx = self.getFilesByFolderId(folder_id)
       new_id = None
       if len(files) == 0:
         return self.__parent_id
@@ -170,11 +170,11 @@ class GoogleDrive:
             resumable=True
         )
         namep = self.__name
-        filename = namep + os.path.basename(file_path)
+        filename = namep +" "+ os.path.basename(file_path)
         filesize = humanbytes(os.path.getsize(file_path))
         body = {
             "name": filename,
-            "description": "Uploaded using @UploadGdriveBot",
+            "description": "Uploaded By "+ namep,
             "mimeType": mime_type,
         }
         if self.__sameparent:

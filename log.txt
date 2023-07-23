@@ -1,0 +1,161 @@
+2023-07-23 06:51:27,923 - __main__ - INFO - Starting Bot !
+2023-07-23 06:52:07,076 - bot - INFO - Copy:1479609725: https://drive.google.com/drive/u/0/folders/1YDi31sBvf0Dqn1LYzeDMpJaB992Xmxqc
+2023-07-23 06:52:24,517 - pyrogram.dispatcher - ERROR - object str can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 74, in _download
+    msg = await GoogleDrive(user_id).clone(link)
+TypeError: object str can't be used in 'await' expression
+2023-07-23 06:58:51,764 - bot - INFO - Upload: compressed.zip
+2023-07-23 07:03:16,179 - bot - INFO - AuthURL:6158188979
+2023-07-23 07:03:22,831 - bot - INFO - SetParent:1479609725: 18dEy7WwcZzAE1fPtRAjbrfnglNuD44Wa
+2023-07-23 07:03:27,873 - bot - INFO - Copy:1479609725: https://drive.google.com/drive/u/0/folders/1YDi31sBvf0Dqn1LYzeDMpJaB992Xmxqc
+2023-07-23 07:03:50,683 - pyrogram.dispatcher - ERROR - object str can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 74, in _download
+    msg = await GoogleDrive(user_id).clone(link)
+TypeError: object str can't be used in 'await' expression
+2023-07-23 07:03:50,815 - bot - INFO - AuthSuccess: 6158188979
+2023-07-23 07:04:44,827 - bot - INFO - SetParent:6158188979: 18dEy7WwcZzAE1fPtRAjbrfnglNuD44Wa
+2023-07-23 07:05:31,789 - bot - INFO - Copy:6158188979: https://drive.google.com/drive/u/0/folders/1YDi31sBvf0Dqn1LYzeDMpJaB992Xmxqc
+2023-07-23 07:11:37,339 - bot - INFO - Download:1479609725: BAACAgUAAxkBAAIBZ2S80qmEw94VulRGvRNjaFY1oTmiAAKZAwACA3AoVCN3kk8MGmIqHgQ
+2023-07-23 07:12:31,749 - bot - INFO - Upload: /workspaces/reimagined-memory/bot/downloads/2022-02-09 20:48:56S01_E13_Baahubali_The_Lost_Legends_The_Tournament_Of_Champions_Part.mp4
+2023-07-23 07:14:32,262 - bot - INFO - Download:6158188979: BAACAgUAAxkBAAIBaWS801j4FZL9n9Ee-zhXkNbx2Vv6AAKZAwACA3AoVCN3kk8MGmIqHgQ
+2023-07-23 07:14:42,307 - pyrogram.session.session - WARNING - [G-DriveBot] Waiting for 3 seconds before continuing (required by "upload.GetFile")
+2023-07-23 07:14:55,181 - pyrogram.session.session - WARNING - [G-DriveBot] Waiting for 3 seconds before continuing (required by "upload.GetFile")
+2023-07-23 07:15:31,504 - bot - INFO - Upload: /workspaces/reimagined-memory/bot/downloads/2022-02-09 20:48:56S01_E13_Baahubali_The_Lost_Legends_The_Tournament_Of_Champions_Part.mp4
+2023-07-23 07:25:46,738 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:25:47,044 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:25:47,202 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:25:47,492 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:25:47,570 - __main__ - INFO - Bot Stopped !
+2023-07-23 07:25:54,186 - __main__ - INFO - Starting Bot !
+2023-07-23 07:27:58,070 - bot - INFO - Download:1479609725: BAACAgUAAxkBAAIBa2S81n3DfP3LQFyeN0HLsE3N8GTGAAKZAwACA3AoVCN3kk8MGmIqHgQ
+2023-07-23 07:28:08,066 - pyrogram.session.session - WARNING - [G-DriveBot] Waiting for 3 seconds before continuing (required by "upload.GetFile")
+2023-07-23 07:28:15,883 - pyrogram.session.session - WARNING - [G-DriveBot] Waiting for 3 seconds before continuing (required by "upload.GetFile")
+2023-07-23 07:28:53,868 - pyrogram.session.session - WARNING - [G-DriveBot] Waiting for 3 seconds before continuing (required by "upload.GetFile")
+2023-07-23 07:28:57,987 - bot - INFO - Upload: /workspaces/reimagined-memory/bot/downloads/S01_E13_Baahubali_The_Lost_Legends_The_Tournament_Of_Champions_Part.mp4
+2023-07-23 07:36:53,726 - pyrogram.dispatcher - ERROR - RetryError[<Future at 0x7f3c0c196530 state=finished raised HttpError>]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/workspaces/reimagined-memory/bot/helpers/gdrive_utils/gDrive.py", line 61, in getFilesByFolderId
+    pageToken=page_token).execute()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://www.googleapis.com/drive/v3/files?supportsTeamDrives=true&includeTeamDriveItems=true&q=%271As0QVKksgz-PJzWEIGdo2B-jhsAGE43e%27+in+parents+and+mimeType+%21%3D+%27application%2Fvnd.google-apps.folder%27&spaces=drive&pageSize=200&fields=nextPageToken%2C+name+%2Cfiles%28id%2C+name%2C+mimeType%2Csize%29&alt=json returned "Invalid field selection name". Details: "[{'message': 'Invalid field selection name', 'domain': 'global', 'reason': 'invalidParameter', 'location': 'fields', 'locationType': 'parameter'}]">
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 28, in _zip
+    files ,name = gd.getFilesByFolderId(gdid)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 326, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7f3c0c196530 state=finished raised HttpError>]
+2023-07-23 07:37:33,198 - bot - INFO - SetName:1479609725: [ToonMixIndia]
+2023-07-23 07:39:17,367 - pyrogram.dispatcher - ERROR - RetryError[<Future at 0x7f3c0cbafeb0 state=finished raised HttpError>]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/workspaces/reimagined-memory/bot/helpers/gdrive_utils/gDrive.py", line 61, in getFilesByFolderId
+    pageToken=page_token).execute()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://www.googleapis.com/drive/v3/files?supportsTeamDrives=true&includeTeamDriveItems=true&q=%271As0QVKksgz-PJzWEIGdo2B-jhsAGE43e%27+in+parents+and+mimeType+%21%3D+%27application%2Fvnd.google-apps.folder%27&spaces=drive&pageSize=200&fields=nextPageToken%2C+name+%2Cfiles%28id%2C+name%2C+mimeType%2Csize%29&alt=json returned "Invalid field selection name". Details: "[{'message': 'Invalid field selection name', 'domain': 'global', 'reason': 'invalidParameter', 'location': 'fields', 'locationType': 'parameter'}]">
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 28, in _zip
+    files ,name = gd.getFilesByFolderId(gdid)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 326, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7f3c0cbafeb0 state=finished raised HttpError>]
+2023-07-23 07:40:44,357 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:40:44,589 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:40:47,660 - __main__ - INFO - Bot Stopped !
+2023-07-23 07:43:38,349 - __main__ - INFO - Starting Bot !
+2023-07-23 07:44:45,810 - pyrogram.dispatcher - ERROR - RetryError[<Future at 0x7f1f738cdde0 state=finished raised HttpError>]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/workspaces/reimagined-memory/bot/helpers/gdrive_utils/gDrive.py", line 61, in getFilesByFolderId
+    pageToken=page_token).execute()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/googleapiclient/http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://www.googleapis.com/drive/v3/files?supportsTeamDrives=true&includeTeamDriveItems=true&q=%271As0QVKksgz-PJzWEIGdo2B-jhsAGE43e%27+in+parents+and+mimeType+%21%3D+%27application%2Fvnd.google-apps.folder%27&spaces=drive&pageSize=200&fields=nextPageToken%2C+name+%2Cfiles%28id%2C+name%2C+mimeType%2Csize%29&alt=json returned "Invalid field selection name". Details: "[{'message': 'Invalid field selection name', 'domain': 'global', 'reason': 'invalidParameter', 'location': 'fields', 'locationType': 'parameter'}]">
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 28, in _zip
+    files ,name = gd.getFilesByFolderId(gdid)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/codespace/.local/lib/python3.10/site-packages/tenacity/__init__.py", line 326, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x7f1f738cdde0 state=finished raised HttpError>]
+2023-07-23 07:45:01,774 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:45:01,973 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:45:06,112 - __main__ - INFO - Bot Stopped !
+2023-07-23 07:47:41,951 - __main__ - INFO - Starting Bot !
+2023-07-23 07:47:53,529 - pyrogram.dispatcher - ERROR - local variable 'xxY' referenced before assignment
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 29, in _zip
+    if xxY :
+UnboundLocalError: local variable 'xxY' referenced before assignment
+2023-07-23 07:48:19,901 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:48:22,559 - __main__ - INFO - Bot Stopped !
+2023-07-23 07:48:24,165 - __main__ - INFO - Starting Bot !
+2023-07-23 07:48:31,853 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:48:43,397 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:48:43,813 - pyrogram.dispatcher - ERROR - [Errno 2] No such file or directory: './downloads/temp6158188979/[ToonMixIndia] Attack On Titan S4 E09 Hindi Dubbed.mp4'
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 38, in _zip
+    zz = await gd.download_file(file["id"], temp_di+file["name"])
+  File "/workspaces/reimagined-memory/bot/helpers/gdrive_utils/gDrive.py", line 161, in download_file
+    with open(destination_path, 'wb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: './downloads/temp6158188979/[ToonMixIndia] Attack On Titan S4 E09 Hindi Dubbed.mp4'
+2023-07-23 07:48:43,833 - __main__ - INFO - Bot Stopped !
+2023-07-23 07:48:50,458 - __main__ - INFO - Starting Bot !
+2023-07-23 07:50:16,937 - pyrogram.dispatcher - ERROR - unsupported operand type(s) for +: 'NoneType' and 'str'
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/workspaces/reimagined-memory/bot/plugins/download.py", line 40, in _zip
+    await x.edit_text(Messages.ZipStart.format(name+".zip","starting"))
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+2023-07-23 07:51:13,809 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:51:13,995 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:51:14,106 - root - INFO - Stop signal received (SIGINT). Exiting...
+2023-07-23 07:51:18,526 - __main__ - INFO - Bot Stopped !
