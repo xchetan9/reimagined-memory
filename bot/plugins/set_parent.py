@@ -36,4 +36,4 @@ def _set_name(client, message):
   text = message.text.replace("/setname ", "")
   nameDB._set(user_id, text)
   LOGGER.info(f'SetName:{user_id}: {text}')
-  message.reply(Messages.PARENT_SET_SUCCESS.format(text, "/setname "))
+  message.reply(Messages.NAME_SET_SUCCESS.format(text, "/setname "))
