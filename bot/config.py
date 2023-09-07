@@ -7,8 +7,8 @@ class config:
     SUDO_USERS = "6158188979" # Sepearted by space.
     SUPPORT_CHAT_LINK = ""
     DOWNLOAD_DIRECTORY = "./downloads/"
-    G_DRIVE_CLIENT_ID = "286848607938-a2er64tikjgditr6pg9a81u8u4ur3298.apps.googleusercontent.com"
-    G_DRIVE_CLIENT_SECRET = "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"
+    G_DRIVE_CLIENT_ID = "286848607938-k01o1rg3dj0f2jb75sjjk6lmkb3keme7.apps.googleusercontent.com"
+    G_DRIVE_CLIENT_SECRET = "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"
     MAX_TASKS = 4
 
 
