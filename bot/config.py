@@ -1,5 +1,5 @@
 class config:
-    BOT_TOKEN = "6389187055:AAE2L5CxZ97wJn_J4c_2M_FRy2rwrxZ6qPQ"                              # Require restart after changing it while bot running
+    BOT_TOKEN = "6368650509:AAEti82R4aJlbeXANFraNvPsgwWbrRoul5M"                              # Require restart after changing it while bot running
     # OWNER_ID = "6158188979"                               # Require restart after changing it while bot running
     APP_ID = "7999622"                           # Require restart after changing it while bot running
     API_HASH = "0c6b5e046ae4aff8987e95b93c9ce281"  
